@@ -118,5 +118,7 @@ function analyzeFile(apiKey, content, interval) {
 }
 
 function Show(json) {
+	//var obj = JSON.parse(json);
 	$('#result').append("<li>" + JSON.stringify(json) + "</li>");
+	//$('#result').append("<li>" + obj.result + "</li>");
 }

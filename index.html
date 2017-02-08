@@ -9,8 +9,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 	
-	<script src="js/record/MediaStreamRecorder.js"></script>
-	<script src="js/record/gumadapter.js"></script>
+	<script src="js/record/lib/MediaStreamRecorder.js"></script>
+	<script src="js/record/lib/gumadapter.js"></script>
 	
     <style>
         label.error { color: red; font-weight: normal; }
@@ -20,8 +20,9 @@
 
     <div class="container">
         <h1>Ambio Test</h1>
-        <hr /> 
+        <hr/> 
 		
+		<!-- Audio recorder and output -->
 		<section class="experiment" style="padding: 5px;">
             <label for="time-interval">Time Interval (milliseconds):</label>
             <input type="text" id="time-interval" value="14000">ms
@@ -29,40 +30,45 @@
             <br>
             <br>
 
-            <button id="start-recording">Start</button>
-            <button id="stop-recording" disabled>Stop</button>
+            <button id="start-recording" class="btn btn-default">Start</button>
+            <button id="stop-recording" class="btn btn-default" disabled>Stop</button>
 
-            <button id="pause-recording" disabled>Pause</button>
-            <button id="resume-recording" disabled>Resume</button>
+            <button id="pause-recording" class="btn btn-default" disabled>Pause</button>
+            <button id="resume-recording" class="btn btn-default" disabled>Resume</button>
 
-            <button id="save-recording" disabled>Save</button>
+            <button id="save-recording" class="btn btn-default" disabled>Save</button>
         </section>
 
         <section class="experiment">
             <div id="audios-container"></div>
         </section>
-		
+		<br>
+		<hr>
+		<br>
+		<!-- Audio analyze -->
         <form id="form" class="form-horizontal">
             <div class="form-group">
-                <label for="input_file" class="col-sm-2 control-label">Input File</label>
+                <label for="input_file" class="col-sm-1 control-label">Input File</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control" id="input_file" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="api_key" class="col-sm-2 control-label">API Key</label>
+                <label for="api_key" class="col-sm-1 control-label">API Key</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="api_key" placeholder="ad81cbc4-d24f-4514-86db-8bc51381bd5c"  required>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="col-sm-10">
                     <button id="submit" type="submit" class="btn btn-default">Start</button>
                 </div>
             </div>
         </form>
-
+		<br><hr><br>
+		
+		<!--Results-->
         <div class="panel panel-default">
             <div class="panel-heading">Results</div>
             <div class="panel-body">
