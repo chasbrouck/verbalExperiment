@@ -8,7 +8,10 @@
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-
+	
+	<script src="js/record/MediaStreamRecorder.js"></script>
+	<script src="js/record/gumadapter.js"></script>
+	
     <style>
         label.error { color: red; font-weight: normal; }
     </style>
@@ -18,7 +21,30 @@
     <div class="container">
         <h1>Beyond Verbal</h1>
         <hr /> 
+		
+		<section class="experiment" style="padding: 5px;">
+            <label for="time-interval">Time Interval (milliseconds):</label>
+            <input type="text" id="time-interval" value="5000">ms
 
+            <input id="left-channel" type="checkbox" checked style="width:auto;">
+            <label for="left-channel">Record Mono Audio if WebAudio API is selected (above)</label>
+
+            <br>
+            <br>
+
+            <button id="start-recording">Start</button>
+            <button id="stop-recording" disabled>Stop</button>
+
+            <button id="pause-recording" disabled>Pause</button>
+            <button id="resume-recording" disabled>Resume</button>
+
+            <button id="save-recording" disabled>Save</button>
+        </section>
+
+        <section class="experiment">
+            <div id="audios-container"></div>
+        </section>
+		
         <form id="form" class="form-horizontal">
             <div class="form-group">
                 <label for="input_file" class="col-sm-2 control-label">Input File</label>
@@ -47,7 +73,12 @@
             </div>
         </div>
     </div>
+	
+	<!-- analyze sound scripts -->
 	<script src="js/analyzeFile.js">
 	</script>
+	
+	<!-- record sound scripts -->
+	<script src="js/record/record.js"></script>
 </body>
 </html>
