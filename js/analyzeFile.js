@@ -118,7 +118,14 @@ function analyzeFile(apiKey, content, interval) {
 }
 
 function Show(json) {
-	//var obj = JSON.parse(json);
-	$('#result').append("<li>" + JSON.stringify(json) + "</li>");
-	//$('#result').append("<li>" + obj.result + "</li>");
+	
+	var obj = jQuery.parseJSON( json );
+	//obj.result.analysisSegments[0]
+	if (obj.result) {
+		console.log(obj.result.analysisSegments[0].analysis.Mood.Composite.Primary.Phrase);
+		$('#result').append("<li>" + obj.result.analysisSegments[0].analysis.Mood.Composite.Primary.Phrase + "</li>");
+	} else {
+		console.log(obj);
+		$('#result').append("<li>" + JSON.stringify(json) + "</li>");
+	}
 }
